@@ -1,0 +1,1784 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SiteTitle -->
+    <title>BootCamp Preparation Plan</title>
+
+    <!-- GoogleFonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Styles -->
+    <style>
+      /* ColorVariables */
+      :root {
+        --bg: #0a0a0f;
+        --surface: #111118;
+        --card: #16161f;
+        --border: #22222e;
+        --accent1: #6c63ff;
+        --accent2: #ff6b9d;
+        --accent3: #00e5b0;
+        --accent4: #ffa940;
+        --text: #e8e8f0;
+        --muted: #6b6b80;
+        --w1: #6c63ff;
+        --w2: #00e5b0;
+      }
+
+      /* GlobalStyles */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Syne", sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* BackgroundStyle */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(108, 99, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(108, 99, 255, 0.04) 1px, transparent 1px);
+        background-size: 40px 40px;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .container {
+        position: relative;
+        z-index: 1;
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 40px 20px 80px;
+      }
+
+      /* Header */
+      .hero {
+        text-align: center;
+        padding: 60px 0 50px;
+        position: relative;
+      }
+      .hero-badge {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--accent3);
+        border: 1px solid rgba(0, 229, 176, 0.3);
+        padding: 6px 16px;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        background: rgba(0, 229, 176, 0.05);
+      }
+      .hero h1 {
+        font-size: clamp(32px, 6vw, 56px);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -1px;
+        margin-bottom: 12px;
+      }
+      .hero h1 span {
+        background: linear-gradient(135deg, var(--accent1), var(--accent2));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .hero-sub {
+        font-family: "Noto Sans Bengali", sans-serif;
+        color: var(--muted);
+        font-size: 15px;
+        margin-bottom: 30px;
+      }
+
+      /* StatsBar */
+      .stats {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-bottom: 50px;
+      }
+      .stat-pill {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        padding: 8px 16px;
+        border-radius: 8px;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .stat-pill .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+      }
+
+      /* WeekTabs */
+      .week-tabs {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 30px;
+        background: var(--surface);
+        padding: 6px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+      }
+      .week-tab {
+        flex: 1;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-family: "Syne", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        transition: all 0.25s;
+        background: transparent;
+        color: var(--muted);
+        letter-spacing: 0.3px;
+      }
+      .week-tab.active {
+        color: #fff;
+      }
+      .week-tab.w1.active {
+        background: linear-gradient(135deg, var(--accent1), #8b84ff);
+      }
+      .week-tab.w2.active {
+        background: linear-gradient(135deg, #00b894, var(--accent3));
+      }
+      .week1 {
+        background: linear-gradient(135deg, #6c63ff, #ff6b9d);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .week2 {
+        background: linear-gradient(135deg, #00b894, #00e5b0);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* ProgressBar */
+      .progress-section {
+        margin-bottom: 36px;
+      }
+      .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .progress-label {
+        font-size: 13px;
+        color: var(--muted);
+        font-family: "JetBrains Mono", monospace;
+      }
+      .progress-track {
+        height: 6px;
+        background: var(--border);
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 3px;
+        transition: width 0.6s ease;
+      }
+      .progress-fill.w1 {
+        background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      }
+      .progress-fill.w2 {
+        background: linear-gradient(90deg, #00b894, var(--accent3));
+      }
+
+      /* DayCards */
+      .week-panel {
+        display: none;
+      }
+      .week-panel.active {
+        display: block;
+      }
+      .day-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        margin-bottom: 14px;
+        overflow: hidden;
+        transition:
+          border-color 0.2s,
+          transform 0.2s;
+        cursor: pointer;
+      }
+      .day-card:hover {
+        border-color: rgba(108, 99, 255, 0.4);
+        transform: translateX(3px);
+      }
+      .day-card.done {
+        border-color: rgba(0, 229, 176, 0.3);
+        opacity: 0.75;
+      }
+      .day-card.done .day-header {
+        background: rgba(0, 229, 176, 0.05);
+      }
+      .day-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 18px 22px;
+        background: var(--surface);
+        -webkit-user-select: none;
+      }
+      .day-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 2px;
+        color: var(--muted);
+        min-width: 36px;
+      }
+      .day-date {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--text);
+        min-width: 90px;
+      }
+      .day-title-en {
+        font-size: 14px;
+        font-weight: 700;
+        flex: 1;
+      }
+      .day-title-bn {
+        font-family: "Noto Sans Bengali", sans-serif;
+        font-size: 12px;
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .day-time-badge {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        background: rgba(108, 99, 255, 0.12);
+        color: var(--accent1);
+        white-space: nowrap;
+      }
+      .day-time-badge.green {
+        background: rgba(0, 229, 176, 0.1);
+        color: var(--accent3);
+      }
+      .check-btn {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        border: 2px solid var(--border);
+        color: var(--border);
+        background: transparent;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        flex-shrink: 0;
+        font-size: 14px;
+      }
+      .check-btn:hover {
+        border-color: var(--accent3);
+        color: var(--accent3);
+      }
+      .day-card.done .check-btn {
+        background: var(--accent3);
+        border-color: var(--accent3);
+      }
+      .expand-icon {
+        color: var(--muted);
+        font-size: 12px;
+        transition: transform 0.25s;
+        flex-shrink: 0;
+      }
+      .day-card.open .expand-icon {
+        transform: rotate(180deg);
+      }
+      .day-body {
+        display: none;
+        padding: 0 22px 20px;
+      }
+      .day-card.open .day-body {
+        display: block;
+      }
+      .schedule-row {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .schedule-row:last-child {
+        border-bottom: none;
+      }
+      .time-slot {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--accent1);
+        min-width: 120px;
+        padding-top: 2px;
+        flex-shrink: 0;
+      }
+      .task-en {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: 4px;
+      }
+      .task-bn {
+        font-family: "Noto Sans Bengali", sans-serif;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .task-content {
+        flex: 1;
+      }
+      .tag {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-right: 5px;
+        margin-top: 4px;
+      }
+      .tag.ts {
+        background: rgba(108, 99, 255, 0.15);
+        color: #8b84ff;
+      }
+      .tag.sql {
+        background: rgba(255, 107, 157, 0.12);
+        color: #ff6b9d;
+      }
+      .tag.prisma {
+        background: rgba(0, 229, 176, 0.1);
+        color: var(--accent3);
+      }
+      .tag.project {
+        background: rgba(255, 169, 64, 0.12);
+        color: var(--accent4);
+      }
+      .tag.rest {
+        background: rgba(255, 107, 157, 0.12);
+        color: #ff6b9d;
+      }
+
+      /* TipBox */
+      .tip-box {
+        margin-top: 12px;
+        padding: 12px 16px;
+        background: rgba(108, 99, 255, 0.07);
+        border-left: 3px solid var(--accent1);
+        border-radius: 0 8px 8px 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .tip-box strong {
+        color: var(--accent1);
+      }
+      .tip-bn {
+        font-family: "Noto Sans Bengali", sans-serif;
+        font-size: 11px;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+
+      /* Legend */
+      .legend {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-bottom: 24px;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      /* WeekSummary */
+      .week-summary {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 30px;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .ws-icon {
+        font-size: 32px;
+      }
+      .ws-content {
+        flex: 1;
+        min-width: 200px;
+      }
+      .ws-title {
+        font-size: 18px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .ws-desc {
+        font-family: "Noto Sans Bengali", sans-serif;
+        font-size: 13px;
+        color: var(--muted);
+      }
+      .ws-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 10px;
+      }
+      .ws-chip {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 6px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      /* Footer */
+      .footer {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 30px;
+        border-top: 1px solid var(--border);
+      }
+      .footer p {
+        font-family: "Noto Sans Bengali", sans-serif;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .footer strong {
+        color: var(--accent3);
+      }
+      .completed-count {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--accent3);
+        text-align: right;
+        margin-bottom: 8px;
+      }
+
+      /* ResponsiveStyles */
+      @media (max-width: 600px) {
+        .day-title-bn {
+          display: none;
+        }
+        .day-date {
+          min-width: 70px;
+          font-size: 11px;
+        }
+        .time-slot {
+          min-width: 90px;
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-badge">Starts May 1, 2026</div>
+        <h1>AI-Driven BootCamp<br /><span>Preparation Plan</span></h1>
+        <p class="hero-sub">
+          মূল কোর্সের আগে নিজেকে প্রস্তুত করার ১৪ দিনের রোডম্যাপ
+        </p>
+      </section>
+
+      <main>
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat-pill">
+            <span class="dot" style="background: #6c63ff"></span>14 Days
+          </div>
+          <div class="stat-pill">
+            <span class="dot" style="background: #ff6b9d"></span>April 18 -
+            April 30
+          </div>
+          <div class="stat-pill">
+            <span class="dot" style="background: #00e5b0"></span>2-5 hrs/day
+          </div>
+          <div class="stat-pill">
+            <span class="dot" style="background: #ffa940"></span>TypeScript +
+            SQL + Prisma
+          </div>
+        </div>
+
+        <!-- WeekTabs -->
+        <div class="week-tabs">
+          <button class="week-tab w1 active" onclick="switchWeek(1)">
+            Week 1 — TypeScript (April 18-24)
+          </button>
+          <button class="week-tab w2" onclick="switchWeek(2)">
+            Week 2 — SQL + Prisma (April 25-30)
+          </button>
+        </div>
+
+        <!-- WEEK1 -->
+        <div class="week-panel active" id="week1">
+          <div class="week-summary">
+            <div class="ws-content">
+              <div class="ws-title week1">TypeScript Technocrat Week</div>
+              <div class="ws-desc">
+                JavaScript জানো, এবার TypeScript দিয়ে সেটাকে superpower দাও।
+                প্রতিদিন নতুন concept, প্রতিদিন coding practice।
+              </div>
+              <div class="ws-chips">
+                <span class="ws-chip">Types & Interfaces</span>
+                <span class="ws-chip">Generics</span>
+                <span class="ws-chip">Utility Types</span>
+                <span class="ws-chip">TS + React</span>
+                <span class="ws-chip">TS + Node.js</span>
+                <span class="ws-chip">Final Project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="legend">
+            <div class="legend-item">
+              <span class="tag ts">TS</span> TypeScript
+            </div>
+            <div class="legend-item">
+              <span class="tag project">PROJECT</span> Build something
+            </div>
+            <div class="legend-item">
+              <span class="tag rest">REST</span> Break / Review
+            </div>
+          </div>
+
+          <!-- ProgressSection -->
+          <div class="progress-section">
+            <div class="progress-header">
+              <span class="progress-label">Week 1 Progress</span>
+              <span class="progress-label" id="w1-prog-text">0 / 7 days</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill w1" id="w1-bar" style="width: 0%"></div>
+            </div>
+          </div>
+
+          <div class="completed-count" id="w1-count"></div>
+
+          <!-- Day1 -->
+          <div class="day-card" id="day1" onclick="toggleDay('day1')">
+            <div class="day-header">
+              <span class="day-num">DAY 01</span>
+              <span class="day-date">Sat, April 18</span>
+              <div style="flex: 1">
+                <div class="day-title-en">TypeScript Setup + Basic Types</div>
+                <div class="day-title-bn">সেটআপ ও মৌলিক টাইপ</div>
+              </div>
+              <span class="tag ts">TS</span>
+              <span class="day-time-badge">2.5 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day1')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">8:00-8:30 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Install TypeScript, configure tsconfig.json, run first .ts
+                    file
+                  </div>
+                  <div class="task-bn">
+                    TypeScript install করো, tsconfig.json তৈরি করো, প্রথম .ts
+                    ফাইল রান করো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">8:30-9:30 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Practice: string, number, boolean, arrays, tuples, any,
+                    unknown, never
+                  </div>
+                  <div class="task-bn">
+                    সব basic type নিজে হাতে লিখে practice করো — কমপক্ষে ২০ টা
+                    example
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">9:30-10:30 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Type annotations on functions: parameters, return types,
+                    optional params
+                  </div>
+                  <div class="task-bn">
+                    function-এ type annotation দাও, return type লেখো, optional
+                    parameter ব্যবহার করো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Tip:</strong> Use the
+                <a
+                  href="https://www.typescriptlang.org/play"
+                  style="color: #8b84ff"
+                  target="_blank"
+                  >TypeScript Playground</a
+                >
+                — no setup needed in browser!
+                <div class="tip-bn">
+                  TypeScript Playground ব্যবহার করো — browser-এই সরাসরি
+                  TypeScript লেখা যায়, কোনো install লাগে না।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day2 -->
+          <div class="day-card" id="day2" onclick="toggleDay('day2')">
+            <div class="day-header">
+              <span class="day-num">DAY 02</span>
+              <span class="day-date">Sun, April 19</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  Interfaces, Type Aliases & Union Types
+                </div>
+                <div class="day-title-bn">ইন্টারফেস ও টাইপ এলিয়াস</div>
+              </div>
+              <span class="tag ts">TS</span>
+              <span class="day-time-badge">3 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day2')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Interface: define User, Product, Order shapes. Use optional
+                    & readonly fields
+                  </div>
+                  <div class="task-bn">
+                    User, Product, Order-এর interface তৈরি করো। Optional (?) এবং
+                    readonly modifier ব্যবহার করো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-11:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Type aliases: Union types (string | number), Intersection
+                    types (&), Literal types
+                  </div>
+                  <div class="task-bn">
+                    Type alias লেখো, union type (|) এবং intersection type (&)
+                    practice করো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">8:00-9:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Build: A typed "Student Management" object system with CRUD
+                    functions
+                  </div>
+                  <div class="task-bn">
+                    Student Management সিস্টেম বানাও — interface দিয়ে Student
+                    type define করে add/remove/find function লেখো
+                  </div>
+                  <span class="tag project">PROJECT</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Interface vs Type:</strong> Use
+                <code style="color: #8b84ff">interface</code> for objects,
+                <code style="color: #8b84ff">type</code> for unions/primitives.
+                Both work for objects — but interfaces are extendable.
+                <div class="tip-bn">
+                  Object shape-এর জন্য interface ব্যবহার করো। Union বা primitive
+                  type-এর জন্য type alias ব্যবহার করো।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day3 -->
+          <div class="day-card" id="day3" onclick="toggleDay('day3')">
+            <div class="day-header">
+              <span class="day-num">DAY 03</span>
+              <span class="day-date">Mon, April 20</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  Generics — TypeScript's Superpower
+                </div>
+                <div class="day-title-bn">
+                  জেনেরিক্স — TypeScript-এর সবচেয়ে শক্তিশালী ফিচার
+                </div>
+              </div>
+              <span class="tag ts">TS</span>
+              <span class="day-time-badge">3 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day3')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Generic functions: &lt;T&gt; syntax, generic arrays,
+                    multiple type params &lt;T, U&gt;
+                  </div>
+                  <div class="task-bn">
+                    Generic function লেখো — &lt;T&gt; syntax বোঝো,
+                    getFirst&lt;T&gt;, pair&lt;T,U&gt; ইত্যাদি লেখো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-11:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Generic interfaces & classes. Constraints with "extends".
+                    keyof operator
+                  </div>
+                  <div class="task-bn">
+                    Generic interface ও class লেখো। extends দিয়ে constraint
+                    দাও। keyof operator শেখো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">8:00-9:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Build: Generic fetchData&lt;T&gt; function + Generic Stack
+                    data structure class
+                  </div>
+                  <div class="task-bn">
+                    Generic fetchData function এবং Generic Stack class বানাও —
+                    push, pop, peek implement করো
+                  </div>
+                  <span class="tag project">PROJECT</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Real-world use:</strong> Every API call you write should
+                use generics:
+                <code style="color: #8b84ff"
+                  >async function get&lt;T&gt;(url: string):
+                  Promise&lt;T&gt;</code
+                >
+                <div class="tip-bn">
+                  প্রতিটা API call-এ generics ব্যবহার করো — এটা industry
+                  standard এবং type-safe code লেখার সেরা উপায়।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day4 -->
+          <div class="day-card" id="day4" onclick="toggleDay('day4')">
+            <div class="day-header">
+              <span class="day-num">DAY 04</span>
+              <span class="day-date">Tue, April 21</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  Utility Types, Enums & Type Guards
+                </div>
+                <div class="day-title-bn">ইউটিলিটি টাইপ, এনাম ও টাইপ গার্ড</div>
+              </div>
+              <span class="tag ts">TS</span>
+              <span class="day-time-badge">3 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day4')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Utility Types: Partial, Required, Readonly, Pick, Omit,
+                    Record, Exclude
+                  </div>
+                  <div class="task-bn">
+                    সব Utility Type হাতে practice করো — প্রতিটার real-world use
+                    case বোঝো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-10:45 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Enums: string enums for OrderStatus, UserRole, PaymentMethod
+                  </div>
+                  <div class="task-bn">
+                    OrderStatus, UserRole, PaymentMethod এর জন্য string enum
+                    তৈরি করো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:45-11:30 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Type Guards: typeof, instanceof, custom "is" guards for
+                    discriminated unions
+                  </div>
+                  <div class="task-bn">
+                    typeof এবং instanceof দিয়ে type guard লেখো। Custom is-guard
+                    function বানাও
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Most used in real projects:</strong> Partial&lt;T&gt;
+                for PATCH/update APIs, Omit&lt;T, 'id'&gt; for create APIs,
+                Pick&lt;T&gt; for response shaping.
+                <div class="tip-bn">
+                  Partial — update API-তে। Omit — create API-তে (id বাদ দিতে)।
+                  Pick — নির্দিষ্ট fields response করতে।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day5 -->
+          <div class="day-card" id="day5" onclick="toggleDay('day5')">
+            <div class="day-header">
+              <span class="day-num">DAY 05</span>
+              <span class="day-date">Wed, April 22</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  TypeScript + React (Props, Hooks, Events)
+                </div>
+                <div class="day-title-bn">TypeScript দিয়ে React লেখা</div>
+              </div>
+              <span class="tag ts">TS</span>
+              <span class="day-time-badge">3.5 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day5')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Create React app with TypeScript (Vite). Type component
+                    props with interface
+                  </div>
+                  <div class="task-bn">
+                    Vite দিয়ে TypeScript React app তৈরি করো। Component props-এ
+                    interface দাও
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-10:45 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    useState&lt;T&gt;, useRef&lt;T&gt;, useReducer with typed
+                    actions, custom hooks with TS
+                  </div>
+                  <div class="task-bn">
+                    useState, useRef, useReducer-এ proper TypeScript type দাও।
+                    Typed custom hook লেখো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:45-11:30 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Event handlers: React.ChangeEvent, React.MouseEvent,
+                    React.FormEvent types
+                  </div>
+                  <div class="task-bn">
+                    Event handler-এ proper React type দাও — onClick, onChange,
+                    onSubmit-এ type করো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Quick win:</strong>
+                <code style="color: #8b84ff"
+                  >npx create-vite@latest my-app -- --template react-ts</code
+                >
+                — TS React app ready in 30 seconds!
+                <div class="tip-bn">
+                  এই command দিয়ে 30 সেকেন্ডে TypeScript React app তৈরি হয়ে
+                  যাবে।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day6 -->
+          <div class="day-card" id="day6" onclick="toggleDay('day6')">
+            <div class="day-header">
+              <span class="day-num">DAY 06</span>
+              <span class="day-date">Thu, April 23</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  TypeScript + Node.js + Express REST API
+                </div>
+                <div class="day-title-bn">TypeScript দিয়ে Express API</div>
+              </div>
+              <span class="tag ts">TS</span>
+              <span class="day-time-badge">3.5 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day6')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Setup Node.js + Express + TypeScript project with tsconfig,
+                    @types packages
+                  </div>
+                  <div class="task-bn">
+                    Node.js + Express TypeScript project setup করো —
+                    @types/express, ts-node-dev install করো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-11:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Type Request, Response, NextFunction. Type request body,
+                    params, query
+                  </div>
+                  <div class="task-bn">
+                    Express-এ Request body, params, query-তে type দাও। Custom
+                    typed middleware লেখো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">11:00-11:30 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Build typed controllers, service layer, typed error handling
+                    middleware
+                  </div>
+                  <div class="task-bn">
+                    Typed controller, service layer এবং error handler middleware
+                    তৈরি করো
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Pattern:</strong> Always create a typed
+                <code style="color: #8b84ff">ApiResponse&lt;T&gt;</code>
+                interface for consistent API responses across your whole
+                backend.
+                <div class="tip-bn">
+                  সব API response-এ একটা common ApiResponse&lt;T&gt; interface
+                  ব্যবহার করো — এটা professional code-এর চিহ্ন।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day7 -->
+          <div class="day-card" id="day7" onclick="toggleDay('day7')">
+            <div class="day-header">
+              <span class="day-num">DAY 07</span>
+              <span class="day-date">Fri, April 24</span>
+              <div style="flex: 1">
+                <div class="day-title-en">Week 1 Project: Typed Todo App</div>
+                <div class="day-title-bn">
+                  প্রজেক্ট: সম্পূর্ণ Typed Todo App
+                </div>
+              </div>
+              <span class="tag project">PROJECT</span>
+              <span class="day-time-badge">4-5 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day7')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:30 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Backend: Express + TypeScript REST API with in-memory store
+                    (no DB yet)
+                  </div>
+                  <div class="task-bn">
+                    Express TypeScript দিয়ে Todo API বানাও —
+                    GET/POST/PUT/DELETE endpoints, in-memory array store
+                  </div>
+                  <span class="tag ts">TS</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:30-12:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Frontend: React + TypeScript UI consuming the API. Typed
+                    state, props, events
+                  </div>
+                  <div class="task-bn">
+                    React TypeScript frontend বানাও — API call করো, state manage
+                    করো, সব type করো
+                  </div>
+                  <span class="tag project">PROJECT</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">12:00-12:30 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Push to GitHub with README. Week 1 review: revisit anything
+                    unclear
+                  </div>
+                  <div class="task-bn">
+                    GitHub-এ push করো। Week 1-এর সব কিছু review করো, যেটা
+                    unclear সেটা আরেকবার দেখো
+                  </div>
+                  <span class="tag rest">REVIEW</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Milestone!</strong> Week 1 complete। তুমি এখন TypeScript
+                দিয়ে full-stack app বানাতে পারো।
+                <div class="tip-bn">
+                  সাপ্তাহিক লক্ষ্য অর্জন! এখন তুমি TypeScript-এ কমপক্ষে ৭০%
+                  comfortable হওয়া উচিত।
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WEEK2 -->
+        <div class="week-panel" id="week2">
+          <div class="week-summary">
+            <div class="ws-content">
+              <div class="ws-title week2">SQL & Database Week</div>
+              <div class="ws-desc">
+                MongoDB জানো, এবার SQL শেখার পালা। PostgreSQL থেকে Prisma
+                পর্যন্ত — database হবে তোমার second home।
+              </div>
+              <div class="ws-chips">
+                <span class="ws-chip">PostgreSQL</span>
+                <span class="ws-chip">SQL Queries</span>
+                <span class="ws-chip">JOINs</span>
+                <span class="ws-chip">Transactions</span>
+                <span class="ws-chip">Prisma ORM</span>
+                <span class="ws-chip">Final Project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="legend">
+            <div class="legend-item">
+              <span class="tag sql">SQL</span> Database
+            </div>
+            <div class="legend-item">
+              <span class="tag prisma">PRISMA</span> ORM
+            </div>
+            <div class="legend-item">
+              <span class="tag project">PROJECT</span> Build something
+            </div>
+          </div>
+
+          <!-- ProgressSection -->
+          <div class="progress-section">
+            <div class="progress-header">
+              <span class="progress-label">Week 2 Progress</span>
+              <span class="progress-label" id="w2-prog-text">0 / 7 days</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-fill w2" id="w2-bar" style="width: 0%"></div>
+            </div>
+          </div>
+          <div class="completed-count" id="w2-count"></div>
+
+          <!-- Day8-->
+          <div class="day-card" id="day8" onclick="toggleDay('day8')">
+            <div class="day-header">
+              <span class="day-num">DAY 08</span>
+              <span class="day-date">Sat, April 25</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  PostgreSQL Setup + DDL Fundamentals
+                </div>
+                <div class="day-title-bn">PostgreSQL ইনস্টল ও টেবিল তৈরি</div>
+              </div>
+              <span class="tag sql">SQL</span>
+              <span class="day-time-badge green">2.5 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day8')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">8:00-8:45 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Install PostgreSQL + pgAdmin/TablePlus. Connect, create
+                    first database
+                  </div>
+                  <div class="task-bn">
+                    PostgreSQL install করো। pgAdmin বা TablePlus দিয়ে connect
+                    করো, প্রথম database তৈরি করো
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">8:45-9:45 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    DDL: CREATE TABLE with data types, PRIMARY KEY, NOT NULL,
+                    UNIQUE, DEFAULT, SERIAL
+                  </div>
+                  <div class="task-bn">
+                    CREATE TABLE লেখো। Data types শেখো — VARCHAR, INT, BOOLEAN,
+                    TIMESTAMP, DECIMAL। Constraints ব্যবহার করো
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">9:45-10:30 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Design: Create users, products, orders, order_items tables
+                    with foreign keys
+                  </div>
+                  <div class="task-bn">
+                    E-commerce schema design করো — users, products, orders,
+                    order_items table তৈরি করো, FOREIGN KEY দাও
+                  </div>
+                  <span class="tag project">PROJECT</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Install guide:</strong>
+                <a
+                  href="https://www.postgresql.org/download"
+                  style="color: #00e5b0"
+                  target="_blank"
+                  >postgresql.org/download</a
+                >
+                — Download করার পর pgAdmin automatically আসে।
+                <div class="tip-bn">
+                  PostgreSQL install-এর সাথে pgAdmin আসে। অথবা TablePlus (ফ্রি
+                  version) ব্যবহার করো — অনেক সুন্দর UI।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day9 -->
+          <div class="day-card" id="day9" onclick="toggleDay('day9')">
+            <div class="day-header">
+              <span class="day-num">DAY 09</span>
+              <span class="day-date">Sun, April 26</span>
+              <div style="flex: 1">
+                <div class="day-title-en">DML — CRUD with SQL</div>
+                <div class="day-title-bn">
+                  SQL দিয়ে ডেটা Insert, Update, Delete
+                </div>
+              </div>
+              <span class="tag sql">SQL</span>
+              <span class="day-time-badge green">3 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day9')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    INSERT rows into all tables. INSERT with RETURNING clause
+                  </div>
+                  <div class="task-bn">
+                    সব table-এ sample data INSERT করো। RETURNING clause দিয়ে
+                    inserted row ফেরত নাও
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-11:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    SELECT with WHERE, LIKE, IN, BETWEEN, IS NULL. ORDER BY,
+                    LIMIT, OFFSET
+                  </div>
+                  <div class="task-bn">
+                    WHERE clause দিয়ে filter করো। LIKE, IN, BETWEEN শেখো।
+                    Pagination এর জন্য LIMIT/OFFSET ব্যবহার করো
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">8:00-9:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    UPDATE with WHERE conditions. DELETE with safety. Practice
+                    15+ queries on SQLZoo
+                  </div>
+                  <div class="task-bn">
+                    UPDATE এবং DELETE practice করো। SQLZoo-তে গিয়ে ১৫টা+ query
+                    লেখো
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Safety rule:</strong> Always use
+                <code style="color: #00e5b0">WHERE</code> with UPDATE and DELETE
+                — without it, ALL rows are affected!
+                <div class="tip-bn">
+                  UPDATE বা DELETE করার সময় সবসময় WHERE clause দাও — না দিলে
+                  সব row affected হবে!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day10 -->
+          <div class="day-card" id="day10" onclick="toggleDay('day10')">
+            <div class="day-header">
+              <span class="day-num">DAY 10</span>
+              <span class="day-date">Mon, April 27</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  JOINs — Connecting Tables Together
+                </div>
+                <div class="day-title-bn">
+                  JOIN — একাধিক টেবিল একসাথে query করা
+                </div>
+              </div>
+              <span class="tag sql">SQL</span>
+              <span class="day-time-badge green">3 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day10')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    INNER JOIN, LEFT JOIN, RIGHT JOIN — visual diagrams + 10
+                    practice queries
+                  </div>
+                  <div class="task-bn">
+                    INNER JOIN, LEFT JOIN, RIGHT JOIN এর পার্থক্য বোঝো। প্রতিটার
+                    জন্য ১০টা query লেখো
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-11:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Multi-table JOIN: orders + users + products + order_items
+                    all joined
+                  </div>
+                  <div class="task-bn">
+                    ৩-৪টা table একসাথে JOIN করো। Order details সহ customer name
+                    ও product name দেখাও
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">8:00-9:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    GROUP BY, HAVING, COUNT, SUM, AVG — analytics queries on
+                    your e-commerce data
+                  </div>
+                  <div class="task-bn">
+                    Aggregation functions দিয়ে analytics query লেখো — best
+                    seller, top customer, monthly revenue
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Remember:</strong> LEFT JOIN returns all rows from left
+                table even without a match. Use it when data might be missing
+                (e.g. users without orders).
+                <div class="tip-bn">
+                  LEFT JOIN — বাম table-এর সব row আসবে, match না থাকলে NULL
+                  আসবে। যেমন: order নেই এমন users দেখাতে।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day11 -->
+          <div class="day-card" id="day11" onclick="toggleDay('day11')">
+            <div class="day-header">
+              <span class="day-num">DAY 11</span>
+              <span class="day-date">Tue, April 28</span>
+              <div style="flex: 1">
+                <div class="day-title-en">Indexes, Transactions & Views</div>
+                <div class="day-title-bn">পারফরম্যান্স, নিরাপত্তা ও ভিউ</div>
+              </div>
+              <span class="tag sql">SQL</span>
+              <span class="day-time-badge green">3 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day11')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-9:45 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Indexes: CREATE INDEX, composite indexes, EXPLAIN ANALYZE to
+                    see performance
+                  </div>
+                  <div class="task-bn">
+                    Index তৈরি করো। EXPLAIN ANALYZE দিয়ে query performance
+                    দেখো। Index আগে ও পরে compare করো
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">9:45-10:45 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Transactions: BEGIN, COMMIT, ROLLBACK. Simulate a
+                    bKash-style money transfer
+                  </div>
+                  <div class="task-bn">
+                    Transaction লেখো। bKash-এর মতো money transfer simulate করো —
+                    ROLLBACK দিয়ে failure handle করো
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:45-12:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Views: Create order_summary view. Use Subqueries and CTEs
+                    (WITH clause)
+                  </div>
+                  <div class="task-bn">
+                    order_summary VIEW তৈরি করো। Subquery এবং CTE (WITH clause)
+                    শেখো ও practice করো
+                  </div>
+                  <span class="tag sql">SQL</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>ACID properties:</strong> Atomicity, Consistency,
+                Isolation, Durability — this is why SQL databases are trusted
+                for financial systems.
+                <div class="tip-bn">
+                  ACID — এই ৪টা property-র জন্যই ব্যাংক, বিকাশ, দারাজ SQL
+                  database ব্যবহার করে।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day12 -->
+          <div class="day-card" id="day12" onclick="toggleDay('day12')">
+            <div class="day-header">
+              <span class="day-num">DAY 12</span>
+              <span class="day-date">Wed, April 29</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  Prisma ORM — TypeScript Meets Database
+                </div>
+                <div class="day-title-bn">
+                  Prisma — TypeScript দিয়ে Database Operations
+                </div>
+              </div>
+              <span class="tag prisma">PRISMA</span>
+              <span class="day-time-badge green">3.5 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day12')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:00-10:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Install Prisma, write schema.prisma, run migrations,
+                    generate Prisma Client
+                  </div>
+                  <div class="task-bn">
+                    Prisma install করো, schema.prisma লেখো, npx prisma migrate
+                    dev চালাও, Client generate করো
+                  </div>
+                  <span class="tag prisma">PRISMA</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-11:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Prisma CRUD: create, findMany, findUnique, update, delete
+                    with filtering
+                  </div>
+                  <div class="task-bn">
+                    Prisma দিয়ে CRUD করো — create, findMany
+                    (filter/sort/paginate), update, delete practice করো
+                  </div>
+                  <span class="tag prisma">PRISMA</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">11:00-12:00 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Relations in Prisma: include, select, nested create. Prisma
+                    $transaction
+                  </div>
+                  <div class="task-bn">
+                    Prisma relation query — include দিয়ে related data load করো।
+                    Nested create এবং $transaction শেখো
+                  </div>
+                  <span class="tag prisma">PRISMA</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Prisma Studio:</strong> Run
+                <code style="color: #00e5b0">npx prisma studio</code> — a visual
+                GUI for your database in the browser!
+                <div class="tip-bn">
+                  npx prisma studio চালালে browser-এ database-এর সুন্দর GUI খুলে
+                  যায় — data দেখা ও edit করা যায়।
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day13 -->
+          <div class="day-card" id="day13" onclick="toggleDay('day13')">
+            <div class="day-header">
+              <span class="day-num">DAY 13</span>
+              <span class="day-date">Thu, April 30</span>
+              <div style="flex: 1">
+                <div class="day-title-en">Final Project: Full-Stack App</div>
+                <div class="day-title-bn">
+                  চূড়ান্ত প্রজেক্ট: Next.js + Prisma + PostgreSQL
+                </div>
+              </div>
+              <span class="tag project">PROJECT</span>
+              <span class="day-time-badge green">5 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day13')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">9:0-10:30 AM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Setup Next.js 14 (App Router) + Prisma + PostgreSQL. Design
+                    schema, run migration
+                  </div>
+                  <div class="task-bn">
+                    Next.js 14 App Router + Prisma + PostgreSQL setup করো। Blog
+                    বা Task Manager-এর schema design করো
+                  </div>
+                  <span class="tag prisma">PRISMA</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:30-12:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Build API routes (app/api/...) with full TypeScript types
+                    using Prisma
+                  </div>
+                  <div class="task-bn">
+                    Next.js App Router-এ API routes বানাও — TypeScript + Prisma
+                    দিয়ে CRUD API complete করো
+                  </div>
+                  <span class="tag project">PROJECT</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">8:00-10:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Build frontend Server Components + Client Components. Deploy
+                    to Vercel (optional)
+                  </div>
+                  <div class="task-bn">
+                    Next.js Server Component থেকে সরাসরি Prisma call করো। Client
+                    Component-এও data fetch করো
+                  </div>
+                  <span class="tag project">PROJECT</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">10:00-11:00 PM</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Push to GitHub. Write README with tech stack, features,
+                    setup instructions
+                  </div>
+                  <div class="task-bn">
+                    সব কিছু GitHub-এ push করো। ভালো README লেখো — tech stack,
+                    features, how to run locally
+                  </div>
+                  <span class="tag rest">REVIEW</span>
+                </div>
+              </div>
+              <div class="tip-box">
+                <strong>Bootcamp Starts!</strong> কাল থেকে main course শুরু।
+                তুমি TypeScript + SQL + Prisma — সব prepare করে ফেলেছো।
+                <div class="tip-bn">
+                  আগামীকাল ১ মে থেকে main course শুরু। তুমি অনেক এগিয়ে আছো বাকি
+                  সবার থেকে। শুভকামনা!
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Day14 -->
+          <div class="day-card" id="day14" onclick="toggleDay('day14')">
+            <div class="day-header">
+              <span class="day-num">BONUS</span>
+              <span class="day-date">May 1, 2026</span>
+              <div style="flex: 1">
+                <div class="day-title-en">
+                  Course Starts! Last Revision & Rest
+                </div>
+                <div class="day-title-bn">
+                  কোর্স শুরু — শেষ রিভিশন ও বিশ্রাম
+                </div>
+              </div>
+              <span class="tag rest">REST</span>
+              <span class="day-time-badge green">1-2 hrs</span>
+              <button class="check-btn" onclick="toggleDone(event, 'day14')">
+                ✓
+              </button>
+              <span class="expand-icon">▼</span>
+            </div>
+            <div class="day-body">
+              <div class="schedule-row">
+                <span class="time-slot">Morning</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Quick revision: TypeScript cheat sheet + SQL cheat sheet
+                    review (30 min)
+                  </div>
+                  <div class="task-bn">
+                    TypeScript ও SQL cheat sheet একবার দেখো — ৩০ মিনিট, বেশি না
+                  </div>
+                  <span class="tag rest">REVIEW</span>
+                </div>
+              </div>
+              <div class="schedule-row">
+                <span class="time-slot">Afternoon</span>
+                <div class="task-content">
+                  <div class="task-en">
+                    Rest, eat well, get energized. Don't code today — trust your
+                    preparation!
+                  </div>
+                  <div class="task-bn">
+                    বিশ্রাম নাও, ভালো খাবার খাও। আজকে code করার দরকার নেই — তুমি
+                    ready!
+                  </div>
+                  <span class="tag rest">REST</span>
+                </div>
+              </div>
+              <div class="tip-box" style="border-left-color: var(--accent3)">
+                <strong style="color: var(--accent3)">Course Day!</strong>
+                তোমার ১৪ দিনের preparation শেষ। এখন main course-এ সবার আগে
+                থাকবে।
+                <div class="tip-bn">
+                  তুমি শুধু Frontend Developer না — এখন তুমি একজন aspiring
+                  Software Engineer।
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>
+          Built for your journey from <strong>Frontend Developer</strong> →
+          <strong>Software Engineer</strong>
+        </p>
+        <p style="margin-top: 8px; font-size: 12px">
+          AI-Driven Sofware Engineering Bootcamp · Starts May 1, 2026 &copy;
+          Programming Hero
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // WeekDays1
+      const week1Days = [
+        "day1",
+        "day2",
+        "day3",
+        "day4",
+        "day5",
+        "day6",
+        "day7",
+      ];
+
+      // WeekDays2
+      const week2Days = [
+        "day8",
+        "day9",
+        "day10",
+        "day11",
+        "day12",
+        "day13",
+        "day14",
+      ];
+
+      //   LoadStateFunction
+      function loadState() {
+        return JSON.parse(localStorage.getItem("bootcamp_done") || "{}");
+      }
+
+      //   SaveStateFunction
+      function saveState(state) {
+        localStorage.setItem("bootcamp_done", JSON.stringify(state));
+      }
+
+      //   ToggleDayFunction
+      function toggleDay(id) {
+        const card = document.getElementById(id);
+        card.classList.toggle("open");
+      }
+
+      //   ToggleDoneFunction
+      function toggleDone(e, id) {
+        e.stopPropagation();
+        const state = loadState();
+        state[id] = !state[id];
+        saveState(state);
+        renderDone();
+      }
+
+      //   RenderFunction
+      function renderDone() {
+        const state = loadState();
+        week1Days.forEach((id) => {
+          const card = document.getElementById(id);
+          if (card) card.classList.toggle("done", !!state[id]);
+        });
+        week2Days.forEach((id) => {
+          const card = document.getElementById(id);
+          if (card) card.classList.toggle("done", !!state[id]);
+        });
+        const w1done = week1Days.filter((id) => state[id]).length;
+        const w2done = week2Days.filter((id) => state[id]).length;
+        document.getElementById("w1-bar").style.width =
+          (w1done / 7) * 100 + "%";
+        document.getElementById("w2-bar").style.width =
+          (w2done / 7) * 100 + "%";
+        document.getElementById("w1-prog-text").textContent =
+          `${w1done} / 7 days`;
+        document.getElementById("w2-prog-text").textContent =
+          `${w2done} / 7 days`;
+        document.getElementById("w1-count").textContent =
+          w1done === 7 ? "🎉 Week 1 Complete!" : "";
+        document.getElementById("w2-count").textContent =
+          w2done === 7 ? "🎉 Week 2 Complete!" : "";
+      }
+
+      //   WeekSwitchFunction
+      function switchWeek(n) {
+        document
+          .querySelectorAll(".week-panel")
+          .forEach((p) => p.classList.remove("active"));
+        document
+          .querySelectorAll(".week-tab")
+          .forEach((t) => t.classList.remove("active"));
+        document.getElementById("week" + n).classList.add("active");
+        document.querySelectorAll(".week-tab")[n - 1].classList.add("active");
+      }
+
+      renderDone();
+    </script>
+  </body>
+</html>
