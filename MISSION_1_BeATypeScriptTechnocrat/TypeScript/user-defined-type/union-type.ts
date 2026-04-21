@@ -4,8 +4,9 @@ useId = "101";
 useId = 101;
 useId = true;
 
-function displayUserInfo(useId: string | number) {
+function displayUserInfo(useId: string | number | boolean) {
   console.log(useId);
 }
 displayUserInfo("101");
+displayUserInfo(true);
 displayUserInfo(101);

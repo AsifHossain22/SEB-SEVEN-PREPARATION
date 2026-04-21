@@ -7,4 +7,5 @@ function displayUserInfo(useId) {
     console.log(useId);
 }
 displayUserInfo("101");
+displayUserInfo(true);
 displayUserInfo(101);
